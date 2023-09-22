@@ -1,9 +1,21 @@
 import React from 'react'
+import {useState} from 'react';
 
 export const FormLogin = () => {
+  const [form, setForm] = useState({
+    usuario: '',
+    password: '',
+  });
+  const handleInputChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  }
   return (
     <main className="container text-center d-flex flex-column justify-content-center align-items-center mt-5">
     <form
+
       id="form"
       className="row bg-body-tertiary g-3 border rounded mt-1 p-5 h-50 w-50 needs-validation"
     >
@@ -18,6 +30,8 @@ export const FormLogin = () => {
           name="usuario"
           id="usuario"
           required=""
+          value={form.usuario}
+          onChange={handleInputChange}  
         />
       </div>
       <div className="col-12">
@@ -30,6 +44,8 @@ export const FormLogin = () => {
           name="password"
           id="password"
           required=""
+          value={form.password}
+          onChange={handleInputChange}
         />
       </div>
       <div className="col-12">
